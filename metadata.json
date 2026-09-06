@@ -1,0 +1,6 @@
+{
+  "name": "AERIA - Residencias de Lujo",
+  "description": "Agencia inmobiliaria premium internacional: catálogo de casas de playa, fincas de campo, penthouses exclusivos, recorrido cinemático con dron interactivo y asesoría privada en bienes raíces.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
