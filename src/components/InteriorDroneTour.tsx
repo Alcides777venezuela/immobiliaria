@@ -30,7 +30,7 @@ export const InteriorDroneTour: React.FC<InteriorDroneTourProps> = ({
   return (
     <section
       id="tour-interior"
-      className="portfolio-section w-full flex flex-col justify-between border-t border-white/10 relative overflow-hidden"
+      className="portfolio-section w-full flex flex-col justify-between relative overflow-hidden"
       aria-label="Recorrido Interior con Dron - Estancias de Autor"
     >
       <div className="w-full max-w-[1400px] mx-auto flex flex-col justify-between h-full relative z-10">

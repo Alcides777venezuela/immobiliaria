@@ -368,7 +368,48 @@ html, body {
   transform: translateY(0);
 }
 
+/* Animated Horizontal Section Divider */
+@keyframes dividerBeamSweep {
+  0% {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  85% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(260%);
+    opacity: 0;
+  }
+}
+
+.animate-divider-beam {
+  animation: dividerBeamSweep 6.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes dividerPulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+.animate-center-pip {
+  animation: dividerPulseGlow 2.5s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .animate-divider-beam,
+  .animate-center-pip {
+    animation: none !important;
+  }
   .portfolio-reveal {
     opacity: 1 !important;
     transform: none !important;

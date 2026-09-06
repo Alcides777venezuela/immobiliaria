@@ -1,17 +1,19 @@
 import React, { useEffect } from 'react';
 import { Property } from '../types';
-import { X, MapPin, Maximize2, Bed, Bath, FileText, Calendar, CheckCircle2 } from 'lucide-react';
+import { X, MapPin, Maximize2, Bed, Bath, FileText, Calendar, CheckCircle2, ZoomIn } from 'lucide-react';
 
 interface PropertyDetailModalProps {
   property: Property | null;
   onClose: () => void;
   onScheduleVisit: (property: Property) => void;
+  onOpenLightbox?: (property: Property) => void;
 }
 
 export const PropertyDetailModal: React.FC<PropertyDetailModalProps> = ({
   property,
   onClose,
   onScheduleVisit,
+  onOpenLightbox,
 }) => {
   const [dossierSent, setDossierSent] = React.useState(false);
 
@@ -53,14 +55,43 @@ export const PropertyDetailModal: React.FC<PropertyDetailModalProps> = ({
         </button>
 
         {/* Hero Image within Modal */}
-        <div className="relative h-64 sm:h-80 w-full overflow-hidden bg-[#0c0d10]">
+        <div
+          className="relative h-64 sm:h-80 w-full overflow-hidden bg-[#0c0d10] cursor-zoom-in group"
+          onClick={() => onOpenLightbox?.(property)}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              onOpenLightbox?.(property);
+            }
+          }}
+          aria-label="Abrir fotografía en alta resolución con zoom"
+        >
           <img
             src={property.imageUrl}
             alt={property.title}
             referrerPolicy="no-referrer"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#121418] via-transparent to-black/40" />
+
+          {/* Inspect 4K Button */}
+          {onOpenLightbox && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onOpenLightbox(property);
+              }}
+              className="absolute top-4 right-14 z-20 flex items-center gap-1.5 px-2.5 py-1 rounded-[4px] bg-black/70 hover:bg-black/90 text-white/90 hover:text-[#bcff48] border border-white/20 text-[10px] font-mono tracking-wider transition-all cursor-pointer shadow-lg"
+              title="Inspeccionar en alta resolución (Lightbox)"
+              aria-label="Inspeccionar en alta resolución"
+            >
+              <ZoomIn className="w-3.5 h-3.5 text-[#bcff48]" />
+              <span className="hidden sm:inline">Inspeccionar 4K</span>
+            </button>
+          )}
 
           {/* Badges on image */}
           <div className="absolute top-4 left-4 flex items-center gap-2">
