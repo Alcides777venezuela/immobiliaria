@@ -360,7 +360,7 @@ export default function App() {
                   className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-[4px] text-[10px] tracking-[0.08em] uppercase font-medium transition-all duration-200 cursor-pointer ${
                     activeCategory === tab.key
                       ? 'bg-white text-[#0a0c10] shadow-[0_2px_12px_rgba(255,255,255,0.2)] font-semibold'
-                      : 'bg-black/40 hover:bg-black/60 text-[#f7f7f2]/70 border border-white/10 backdrop-blur-xs'
+                      : 'bg-[#15171d] hover:bg-[#1f222a] text-[#f7f7f2]/70 border border-white/10'
                   }`}
                 >
                   <span>{tab.label}</span>
@@ -392,7 +392,7 @@ export default function App() {
                   }
                 }}
                 tabIndex={0}
-                className="property-card group flex flex-col cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#bcff48] rounded-[8px] p-1 bg-black/50 backdrop-blur-md border border-white/15 hover:border-white/30 hover:bg-black/65 shadow-xl transition-all"
+                className="property-card group flex flex-col cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#bcff48] rounded-[8px] p-1 bg-[#121418]/60 border border-white/5 hover:border-white/15"
                 aria-label={`Ver detalles de ${property.title}`}
               >
                 {/* Image Container with subtle zoom effect */}
@@ -492,7 +492,7 @@ export default function App() {
         >
           {/* Header */}
           <header className="mb-10 md:mb-12">
-            <div className="flex items-center gap-2 text-[#ff5a42] text-[10px] md:text-[11px] tracking-[0.18em] uppercase font-semibold mb-3 portfolio-copy">
+            <div className="inline-flex items-center gap-2 text-[#ff5a42] text-[10px] md:text-[11px] tracking-[0.18em] uppercase font-semibold mb-3 portfolio-copy px-3 py-1 rounded-[6px] bg-white/[0.08] backdrop-blur-md border border-white/15">
               <span className="w-1.5 h-1.5 rounded-full bg-[#ff5a42] animate-pulse" aria-hidden="true" />
               Brokerage & Family Office / Red Internacional
             </div>
@@ -513,14 +513,14 @@ export default function App() {
               <div
                 key={service.id}
                 id={`service-${service.id}`}
-                className="service-card flex flex-col justify-between p-6 rounded-[8px] border border-white/15 bg-black/50 backdrop-blur-md hover:bg-black/65 shadow-xl transition-all"
+                className="service-card flex flex-col justify-between p-6 rounded-[12px] border border-white/20 bg-white/[0.07] backdrop-blur-2xl hover:bg-white/[0.13] hover:border-white/40 shadow-[0_12px_36px_rgba(0,0,0,0.35),inset_0_1px_0_0_rgba(255,255,255,0.18)] transition-all"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-7 h-7 rounded-[4px] bg-white/5 border border-white/10 flex items-center justify-center">
+                    <div className="w-7 h-7 rounded-[5px] bg-white/10 border border-white/20 flex items-center justify-center backdrop-blur-md">
                       {getServiceIcon(service.id)}
                     </div>
-                    <span className="text-[9px] tracking-[0.14em] uppercase font-mono font-bold px-2 py-0.5 rounded-[3px] bg-white/5 text-[#f7f7f2]/60">
+                    <span className="text-[9px] tracking-[0.14em] uppercase font-mono font-bold px-2 py-0.5 rounded-[4px] bg-white/10 text-white/85 border border-white/15 backdrop-blur-md">
                       {service.number}
                     </span>
                   </div>
@@ -536,14 +536,14 @@ export default function App() {
                     {service.title}
                   </h3>
 
-                  <p className="text-[11px] text-[#f7f7f2]/60 leading-[1.6] font-normal mb-4">
+                  <p className="text-[11px] text-[#f7f7f2]/75 leading-[1.6] font-normal mb-4">
                     {service.description}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-white/10 space-y-1.5">
+                <div className="pt-3 border-t border-white/15 space-y-1.5">
                   {service.benefits.map((benefit, idx) => (
-                    <div key={idx} className="flex items-start gap-1.5 text-[10px] text-[#f7f7f2]/75">
+                    <div key={idx} className="flex items-start gap-1.5 text-[10px] text-[#f7f7f2]/85">
                       <span className="w-1 h-1 rounded-full bg-[#bcff48] mt-1.5 shrink-0" />
                       <span>{benefit}</span>
                     </div>
@@ -554,13 +554,13 @@ export default function App() {
           </div>
 
           {/* Real Estate Trust Statistics Banner */}
-          <div className="w-full p-5 md:p-6 rounded-[8px] bg-gradient-to-r from-black/60 via-black/45 to-black/60 backdrop-blur-md border border-white/15 shadow-xl grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="w-full p-5 md:p-6 rounded-[12px] bg-white/[0.07] backdrop-blur-2xl border border-white/20 shadow-[0_12px_36px_rgba(0,0,0,0.35),inset_0_1px_0_0_rgba(255,255,255,0.18)] grid grid-cols-2 lg:grid-cols-4 gap-6">
             {AGENCY_STATS.map((stat, idx) => (
               <div key={idx} className="flex flex-col">
                 <span className="text-[20px] md:text-[24px] font-bold tracking-tight text-white font-mono">
                   {stat.value}
                 </span>
-                <span className="text-[10px] tracking-[0.12em] uppercase text-[#f7f7f2]/50 mt-0.5">
+                <span className="text-[10px] tracking-[0.12em] uppercase text-[#f7f7f2]/60 mt-0.5">
                   {stat.label}
                 </span>
               </div>
@@ -607,7 +607,7 @@ export default function App() {
           {/* Contact Layout: Interactive Form + Offices Directory */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
             {/* Form Column (7 cols) */}
-            <div className="lg:col-span-7 bg-black/55 backdrop-blur-md p-6 md:p-8 rounded-[8px] border border-white/15 shadow-2xl">
+            <div className="lg:col-span-7 bg-[#121419] p-6 md:p-8 rounded-[8px] border border-white/10">
               <div className="mb-6">
                 <div className="text-[10px] tracking-[0.16em] uppercase text-[#bcff48] font-semibold mb-1">
                   Mandato de Asesoría Inmobiliaria
@@ -833,7 +833,7 @@ export default function App() {
                 <div
                   key={idx}
                   id={`office-${idx}`}
-                  className="p-4 rounded-[6px] bg-black/50 backdrop-blur-md border border-white/15 flex flex-col gap-1.5 hover:border-white/30 hover:bg-black/65 transition-colors shadow-lg"
+                  className="p-4 rounded-[6px] bg-[#121419] border border-white/10 flex flex-col gap-1.5 hover:border-white/20 transition-colors"
                 >
                   <div className="flex items-center justify-between text-[11px]">
                     <span className="font-bold text-white tracking-wide">{office.city}</span>
